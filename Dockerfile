@@ -14,4 +14,4 @@ TS_PASS_FILE="pass"
 RUN echo "user:x:10000:10000:user:/home/user:/bin/bash" >> /etc/passwd && chown -R user /home/user/ && chmod +x ts3exporter
 USER user
 EXPOSE 9189
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
