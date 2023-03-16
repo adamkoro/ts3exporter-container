@@ -1,6 +1,11 @@
+FROM harbor.adamkoro.com/bci/golang:1.19
+WORKDIR /build
+RUN git clone https://github.com/hikhvar/ts3exporter.git && cd ts3exporter
+RUN GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o ts3exporter
+
 FROM harbor.adamkoro.com/bci/bci-micro:15.4
 WORKDIR /home/user
-COPY /tmp/ts3exporter .
+COPY --from=0 /build/ts3exporter/ts3exporter .
 ENV REMOTE="localhost" \
 LISTEN="10011" \
 TS_USER="serveradmin" \

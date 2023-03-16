@@ -3,15 +3,6 @@ type: kubernetes
 name: ts3exporter
 
 steps:
-- name: build-binary
-  image: harbor.adamkoro.com/bci/golang:1.19
-  commands:
-  - git clone https://github.com/hikhvar/ts3exporter.git && cd ts3exporter
-  - GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o /tmp/ts3exporter
-  volumes:
-    - name: tmp-build
-      path: /tmp
-
 - name: build-image
   image: plugins/kaniko
   settings:
@@ -23,10 +14,3 @@ steps:
     tags:
     - latest
     - ${DRONE_COMMIT_SHA:0:7}
-  volumes:
-    - name: tmp-build
-      path: /tmp
-
-volumes:
-  - name: tmp-build
-    temp: {}
