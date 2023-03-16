@@ -13,19 +13,16 @@ steps:
       path: /tmp
 
 - name: build-image
-  image: plugins/docker
+  image: plugins/kaniko
   settings:
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    repo: ts3exporter
-    tags: 
-      - latest
-      - ${DRONE_COMMIT_SHA:0:7}
-    registry: docker.io
-    dockerfile: Dockerfile
-    context: .
+    repo: adamkoro/ts3exporter
+    tags:
+    - latest
+    - ${DRONE_COMMIT_SHA:0:7}
   volumes:
     - name: tmp-build
       path: /tmp
