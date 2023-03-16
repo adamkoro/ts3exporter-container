@@ -12,7 +12,7 @@ Container for [ts3exporter](https://github.com/hikhvar/ts3exporter)
 
 ### Container information
 
-- rooltess container
+- Rooltess container
   - **User ID:** 10000
 
 - Exporter port
@@ -27,7 +27,7 @@ Container for [ts3exporter](https://github.com/hikhvar/ts3exporter)
 | TS_PASS | Teamspeak Server Query Password | password |
 
 #### ts3exporter parameters
-[Original ts3exporter parameters](https://github.com/hikhvar/ts3exporter)
+[Original ts3exporter parameters](https://github.com/hikhvar/ts3exporter#usage)
 If you want to change the default parameters, you can do so by adding the parameters to the docker run command.
 To customize default parameters in the container check [entrypoint.sh](entrypoint.sh) and customize it to your needs.
 
