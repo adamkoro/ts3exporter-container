@@ -3,8 +3,8 @@ type: kubernetes
 name: ts3exporter
 
 steps:
-- name: build
-  image: harbor.adamkoro.com/bci/bci-golang:1.19
+- name: build-binary
+  image: harbor.adamkoro.com/bci/golang:1.19
   commands:
   - git clone https://github.com/hikhvar/ts3exporter.git && cd ts3exporter
   - GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o /tmp/ts3exporter
@@ -12,7 +12,7 @@ steps:
     - name: tmp-build
       path: /tmp
 
-- name: docker
+- name: build-image
   image: plugins/docker
   settings:
     username:
