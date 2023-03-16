@@ -1,7 +1,6 @@
 FROM harbor.adamkoro.com/bci/golang:1.19
 WORKDIR /build
-RUN git clone https://github.com/hikhvar/ts3exporter.git && cd ts3exporter
-RUN GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o ts3exporter
+RUN git clone https://github.com/hikhvar/ts3exporter.git && cd ts3exporter && GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -o ts3exporter
 
 FROM harbor.adamkoro.com/bci/bci-micro:15.4
 WORKDIR /home/user
