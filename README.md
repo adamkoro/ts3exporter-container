@@ -1,10 +1,11 @@
 # ts3exporter-container
+
 [![Build Status](https://drone.adamkoro.com/api/badges/adamkoro/ts3exporter-container/status.svg)](https://drone.adamkoro.com/adamkoro/ts3exporter-container)
-![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/adamkoro/ts3exporter)
-![Docker Pulls](https://img.shields.io/docker/pulls/adamkoro/ts3exporter)
-![Docker Image Version (latest by date)](https://img.shields.io/docker/v/adamkoro/ts3exporter)
-![Docker Stars](https://img.shields.io/docker/stars/adamkoro/ts3exporter)
-![GitHub](https://img.shields.io/github/license/adamkoro/ts3exporter-container)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/adamkoro/ts3exporter)](https://hub.docker.com/r/adamkoro/ts3exporter)
+[![Docker Pulls](https://img.shields.io/docker/pulls/adamkoro/ts3exporter)](https://hub.docker.com/r/adamkoro/ts3exporter)
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/adamkoro/ts3exporter)](https://hub.docker.com/r/adamkoro/ts3exporter)
+[![Docker Stars](https://img.shields.io/docker/stars/adamkoro/ts3exporter)](https://hub.docker.com/r/adamkoro/ts3exporter)
+[![GitHub](https://img.shields.io/github/license/adamkoro/ts3exporter-container)](https://github.com/adamkoro/ts3exporter-container)
 
 Container for [ts3exporter](https://github.com/hikhvar/ts3exporter)
 
