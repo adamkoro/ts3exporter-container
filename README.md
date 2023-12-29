@@ -12,7 +12,7 @@ Container for [ts3exporter](https://github.com/hikhvar/ts3exporter)
 
 ### Container information
 
-- Rooltess container
+- Rootless container
   - **User ID:** 10000
 
 - Exporter port
@@ -36,5 +36,3 @@ To customize default parameters in the container check [entrypoint.sh](entrypoin
 ```bash
 docker run -d -e REMOTE=teamspeak -e PORT=10011 -e TS_USER=serveradmin -e TS_PASS=password  -p 9189:9189 docker.io/adamkoro/ts3exporter:latest
 ```
-
-
