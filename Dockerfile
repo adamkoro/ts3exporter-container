@@ -20,7 +20,7 @@ RUN echo "user:x:10000:10000:user:/home/user:/bin/bash" >> /etc/passwd && chown 
 USER user
 EXPOSE 9189
 ENTRYPOINT ["./entrypoint.sh"]
-HEALTHCHECK --interval=5s --timeout=2s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:9189 || exit 1
+HEALTHCHECK --interval=5s --timeout=2s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:9189/metrics || exit 1
 ARG TS3EXPORTER_VERSION
 COPY --chmod=0550 --from=build --chown=10000:10000 /build/ts3exporter-${TS3EXPORTER_VERSION}/ts3exporter .
 COPY --chmod=0550 --chown=10000:10000 entrypoint.sh .
