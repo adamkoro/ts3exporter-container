@@ -1,6 +1,6 @@
 ARG TS3EXPORTER_VERSION
 
-FROM registry.suse.com/bci/golang:1.21 as build
+FROM registry.suse.com/bci/golang:1.19 as build
 WORKDIR /build
 ARG TS3EXPORTER_VERSION
 RUN zypper ref && zypper -n in wget
