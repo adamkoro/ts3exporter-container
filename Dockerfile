@@ -1,12 +1,8 @@
-ARG TS3EXPORTER_VERSION
-
-FROM registry.suse.com/bci/golang:1.19 as build
+FROM registry.suse.com/bci/bci-base:15.5 as build
 WORKDIR /build
 ARG TS3EXPORTER_VERSION
 RUN zypper ref && zypper -n in wget
-RUN curl -L https://github.com/hikhvar/ts3exporter/archive/refs/tags/v${TS3EXPORTER_VERSION}.tar.gz -o ts3exporter-${TS3EXPORTER_VERSION}.tar.gz && ls -la && tar -xzf ts3exporter-${TS3EXPORTER_VERSION}.tar.gz
-ARG TS3EXPORTER_VERSION
-RUN cd ts3exporter-${TS3EXPORTER_VERSION} && GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build
+RUN curl -L https://github.com/hikhvar/ts3exporter/releases/download/v${TS3EXPORTER_VERSION}/ts3exporter_${TS3EXPORTER_VERSION}_linux_amd64.tar.gz -o ts3exporter.tar.gz && ls -la && tar -xzf ts3exporter.tar.gz
 
 
 FROM registry.suse.com/bci/bci-minimal:15.5
@@ -21,8 +17,7 @@ USER user
 EXPOSE 9189
 ENTRYPOINT ["./entrypoint.sh"]
 HEALTHCHECK --interval=5s --timeout=2s --start-period=10s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:9189/metrics || exit 1
-ARG TS3EXPORTER_VERSION
-COPY --chmod=0550 --from=build --chown=10000:10000 /build/ts3exporter-${TS3EXPORTER_VERSION}/ts3exporter .
+COPY --chmod=0550 --from=build --chown=10000:10000 /build/ts3exporter .
 COPY --chmod=0550 --chown=10000:10000 entrypoint.sh .
 COPY --chmod=0555 --from=build /usr/bin/wget /usr/bin/wget
 COPY --chmod=0555 --from=build  /usr/lib/libproxy* /usr/lib/
